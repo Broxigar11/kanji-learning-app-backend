@@ -1,4 +1,4 @@
-package com.broxigar.kanji_learning_app_backend.kanji.entity;
+package com.broxigar.kanji_learning_app_backend.kanji_library.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

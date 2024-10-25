@@ -1,14 +1,8 @@
-package com.broxigar.kanji_learning_app_backend.kanji.model;
+package com.broxigar.kanji_learning_app_backend.kanji_library.entity;
 
-import com.broxigar.kanji_learning_app_backend.kanji.entity.KanjiComposition;
-import com.broxigar.kanji_learning_app_backend.kanji.entity.KanjiReading;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Lob;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,14 +14,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class KanjiDetailsDTO {
-
-    @NotBlank
+@Entity
+public class Kanji {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @NotBlank
-    @Size(min = 1, max = 1)
-    private String character;
+    private String kanjiCharacter;
 
     @NotBlank
     private String name;
@@ -35,14 +29,19 @@ public class KanjiDetailsDTO {
     @NotNull
     private int strokeCount;
 
+    @Lob
     private String mnemonic;
 
+    @Column(unique = true)
     private int orderNumber;
 
+    @OneToMany(mappedBy = "composedKanji", cascade = CascadeType.ALL)
     private List<KanjiComposition> components;
 
-    private List<KanjiComposition> componentOf;
+    @OneToMany(mappedBy = "componentKanji", cascade = CascadeType.ALL)
+    private List<KanjiComposition> usedInCompositions;
 
     @OneToMany(mappedBy = "id.kanji", cascade = CascadeType.ALL)
     private List<KanjiReading> readings;
+
 }

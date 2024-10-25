@@ -1,4 +1,4 @@
-package com.broxigar.kanji_learning_app_backend.kanji.model;
+package com.broxigar.kanji_learning_app_backend.kanji_library.model;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

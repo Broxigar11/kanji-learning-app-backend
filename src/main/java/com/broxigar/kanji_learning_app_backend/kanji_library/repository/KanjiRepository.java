@@ -1,6 +1,6 @@
-package com.broxigar.kanji_learning_app_backend.kanji.repository;
+package com.broxigar.kanji_learning_app_backend.kanji_library.repository;
 
-import com.broxigar.kanji_learning_app_backend.kanji.entity.Kanji;
+import com.broxigar.kanji_learning_app_backend.kanji_library.entity.Kanji;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

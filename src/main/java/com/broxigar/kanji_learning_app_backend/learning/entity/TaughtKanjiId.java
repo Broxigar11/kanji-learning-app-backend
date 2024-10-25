@@ -1,15 +1,11 @@
 package com.broxigar.kanji_learning_app_backend.learning.entity;
 
-import com.broxigar.kanji_learning_app_backend.kanji.entity.Kanji;
-import com.broxigar.kanji_learning_app_backend.kanji.entity.VocabularyEntry;
+import com.broxigar.kanji_learning_app_backend.kanji_library.entity.Kanji;
 import com.broxigar.kanji_learning_app_backend.user.entity.Users;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
 @Data
 @Embeddable
