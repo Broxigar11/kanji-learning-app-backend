@@ -3,11 +3,9 @@ package com.broxigar.kanji_learning_app_backend.kanji_library.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,13 +19,14 @@ public class VocabularyEntry {
     private long id;
 
     @NotBlank
+    @Column(unique = true)
     private String word;
 
     @Lob
     @NotBlank
     private String meanings;
 
-    @NotEmpty
-    @OneToMany(mappedBy = "id.vocabularyEntry", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "vocabularyEntry", cascade = CascadeType.ALL)
     private List<KanjiReading> readings;
+
 }

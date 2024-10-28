@@ -17,12 +17,11 @@ import java.util.List;
 @Builder
 public class KanjiDetailsDTO {
 
-    @NotBlank
     private long id;
 
     @NotBlank
     @Size(min = 1, max = 1)
-    private String character;
+    private String kanjiCharacter;
 
     @NotBlank
     private String name;
@@ -32,11 +31,12 @@ public class KanjiDetailsDTO {
 
     private String mnemonic;
 
+    @NotNull
     private int orderNumber;
 
     private List<KanjiDTO> components;
 
-    private List<KanjiDTO> partOfCompositions;
+    private List<KanjiDTO> usedInCompositions;
 
     @NotEmpty
     private List<KanjiReadingDTO> readings;

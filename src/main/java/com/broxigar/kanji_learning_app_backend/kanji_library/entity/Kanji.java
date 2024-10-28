@@ -3,10 +3,8 @@ package com.broxigar.kanji_learning_app_backend.kanji_library.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.Size;
+import lombok.*;
 
 import java.util.List;
 
@@ -21,9 +19,12 @@ public class Kanji {
     private long id;
 
     @NotBlank
+    @Size(min = 1, max = 1)
+    @Column(unique = true)
     private String kanjiCharacter;
 
     @NotBlank
+    @Column(unique = true)
     private String name;
 
     @NotNull
@@ -32,6 +33,7 @@ public class Kanji {
     @Lob
     private String mnemonic;
 
+    @NotNull
     @Column(unique = true)
     private int orderNumber;
 
@@ -41,7 +43,7 @@ public class Kanji {
     @OneToMany(mappedBy = "componentKanji", cascade = CascadeType.ALL)
     private List<KanjiComposition> usedInCompositions;
 
-    @OneToMany(mappedBy = "id.kanji", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "kanji", cascade = CascadeType.ALL)
     private List<KanjiReading> readings;
 
 }
